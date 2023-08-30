@@ -55,7 +55,10 @@ Widget contenido() {
           ),
           Text(
             'BIENVENIDO A NUESTRA APP',
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
           Column(
             children: [
