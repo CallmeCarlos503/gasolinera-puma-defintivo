@@ -94,6 +94,7 @@ Widget drawerP() {
           )),
         ),
         ListTile(
+          leading: Icon(Icons.home),
           title: Text('Pagina Principal'),
           onTap: () {
             Navigator.push(ContextP!,
@@ -101,6 +102,7 @@ Widget drawerP() {
           },
         ),
         ListTile(
+          leading: Icon(Icons.map_rounded),
           title: Text('Mapa'),
           onTap: () {
             Navigator.push(
@@ -108,6 +110,7 @@ Widget drawerP() {
           },
         ),
         ListTile(
+          leading: Icon(Icons.person),
           title: Text('Perfil'),
           onTap: () {
             Navigator.push(

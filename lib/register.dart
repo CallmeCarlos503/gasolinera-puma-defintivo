@@ -65,6 +65,7 @@ Widget drawers() {
           )),
         ),
         ListTile(
+          leading: Icon(Icons.login_sharp),
           title: Text('Inicio de sesion'),
           onTap: () {
             Navigator.push(
@@ -72,6 +73,7 @@ Widget drawers() {
           },
         ),
         ListTile(
+          leading: Icon(Icons.person_add_alt_1_sharp),
           title: Text('Registrarse'),
           onTap: () {
             Navigator.push(

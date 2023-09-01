@@ -102,7 +102,7 @@ Widget contenido() {
                             child: Text(
                               'Cerrar sesion',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 18),
+                                  TextStyle(color: Colors.black, fontSize: 20),
                             ),
                             style: ElevatedButton.styleFrom(
                               primary: Colors.white,

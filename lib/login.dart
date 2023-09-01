@@ -108,17 +108,13 @@ Widget Formulario() {
 
 Widget drawers() {
   return Drawer(
-    // Agrega un ListView al drawer. Esto asegura que el usuario pueda desplazarse
-    // a través de las opciones en el Drawer si no hay suficiente espacio vertical
-    // para adaptarse a todo.
     child: ListView(
-      // Importante: elimina cualquier padding del ListView.
       padding: EdgeInsets.zero,
       children: <Widget>[
         DrawerHeader(
           child: Text(
-            'Menu',
-            style: TextStyle(color: Colors.white),
+            'Menu de seleccion',
+            style: TextStyle(color: Colors.white, fontSize: 25),
           ),
           decoration: BoxDecoration(
               image: DecorationImage(
@@ -131,6 +127,7 @@ Widget drawers() {
           )),
         ),
         ListTile(
+          leading: Icon(Icons.login),
           title: Text('Inicio de sesion'),
           onTap: () {
             Navigator.push(
@@ -138,6 +135,7 @@ Widget drawers() {
           },
         ),
         ListTile(
+          leading: Icon(Icons.output),
           title: Text('Registrarse'),
           onTap: () {
             Navigator.push(
