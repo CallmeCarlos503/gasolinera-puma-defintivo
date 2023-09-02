@@ -71,11 +71,7 @@ Widget anunciantes() {
 
 Widget drawerP() {
   return Drawer(
-    // Agrega un ListView al drawer. Esto asegura que el usuario pueda desplazarse
-    // a través de las opciones en el Drawer si no hay suficiente espacio vertical
-    // para adaptarse a todo.
     child: ListView(
-      // Importante: elimina cualquier padding del ListView.
       padding: EdgeInsets.zero,
       children: <Widget>[
         DrawerHeader(
