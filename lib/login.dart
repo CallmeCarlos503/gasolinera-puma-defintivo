@@ -28,6 +28,7 @@ class Login extends StatelessWidget {
 
 Widget background() {
   return Container(
+    
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage('assets/fondo.jpg'),
@@ -51,6 +52,7 @@ Widget Formulario() {
         'INICIO DE SESION',
         style: TextStyle(color: Colors.white, fontSize: 30),
       ),
+      
       Image.asset(
         'assets/logo.png',
         width: 250,
@@ -92,6 +94,7 @@ Widget Formulario() {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      crearBaseDeDatos();
                       Navigator.push(Contexto!,
                           MaterialPageRoute(builder: (context) => Principal()));
                     },
@@ -145,26 +148,5 @@ Widget drawers() {
         ),
       ],
     ),
-  );
-}
-
-
-
-
- Future<void> crearBaseDeDatos() async {
-  final database = await openDatabase(
-    'gasolinera.db',
-    version: 1,
-    onCreate: (db, version) {
-      db.execute(
-          'CREATE TABLE USUARIO('+
-          'ID INTEGER AUTO INCREMENT PRIMARY KEY,'+
-          'NOMBRE TEXT NOT NULL,'+
-          'PASSWORD TEXT NOT NULL,'+
-          'CORREO TEXT NOT NULL,'+
-          'TELEFONO TEXT NOT NULL,'+
-          'ID_ESTADOS INTEGER NOT NULL,'+
-          'ID_ROL INTEGER NOT NULL,'+');');
-    },
   );
 }
