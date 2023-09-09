@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gasolinera/Principal.dart';
 import 'package:gasolinera/register.dart';
+import 'package:sqflite/sqflite.dart';
 
 BuildContext? Contexto;
 
@@ -144,5 +145,24 @@ Widget drawers() {
         ),
       ],
     ),
+  );
+}
+
+//Crear base de datos para gasolinera puma
+ Future<void> crearBaseDeDatos() async {
+  final database = await openDatabase(
+    'gasolinera.db',
+    version: 1,
+    onCreate: (db, version) {
+      db.execute(
+          'CREATE TABLE USUARIO('+
+          'ID INTEGER AUTO INCREMENT PRIMARY KEY,'+
+          'NOMBRE TEXT NOT NULL,'+
+          'PASSWORD TEXT NOT NULL,'+
+          'CORREO TEXT NOT NULL,'+
+          'TELEFONO TEXT NOT NULL,'+
+          'ID_ESTADOS INTEGER NOT NULL,'+
+          'ID_ROL INTEGER NOT NULL,'+');');
+    },
   );
 }
