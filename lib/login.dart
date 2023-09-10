@@ -94,7 +94,7 @@ Widget Formulario() {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      crearBaseDeDatos();
+                      
                       Navigator.push(Contexto!,
                           MaterialPageRoute(builder: (context) => Principal()));
                     },
