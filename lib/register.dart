@@ -193,6 +193,7 @@ Widget Formulario() {
                       } else {
                         //usar los metodos de la clase  Db
                         Db.insertar("testing", email, password, telefono);
+                        limpieza();
                         Navigator.push(ContextoR!,
                             MaterialPageRoute(builder: (context) => Login()));
                       }
@@ -207,4 +208,10 @@ Widget Formulario() {
       )
     ],
   );
+}
+
+void limpieza() {
+  Controlleremail.clear();
+  Controllerpassword.clear();
+  Controllertelefono.clear();
 }

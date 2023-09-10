@@ -102,11 +102,12 @@ Widget Formulario() {
                       String password = Controllerpassword.text;
                       if (correo.isEmpty || password.isEmpty) {
                         ScaffoldMessenger.of(Contexto!).showSnackBar(
-                            SnackBar(content: Text('Faltan datos')));
+                            SnackBar(content: Text('Rellene los datos')));
                       } else {
                         // usar el metodo de Db.dart en la carpeta SQL
                         Db.login(correo, password).then((value) {
                           if (value == true) {
+                            limpieza();
                             Navigator.pushReplacement(
                                 Contexto!,
                                 MaterialPageRoute(
@@ -171,4 +172,9 @@ Widget drawers() {
       ],
     ),
   );
+}
+
+void limpieza() {
+  Controlleremail.clear();
+  Controllerpassword.clear();
 }
