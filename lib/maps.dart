@@ -76,6 +76,11 @@ Widget cartas() {
                   child: const Text('Detalles'),
                   onPressed: () {/* ... */},
                 ),
+                TextButton(
+                  child: const Text('Ver el mapa'),
+                  onPressed: () {/* ... */},
+                ),
+                
                 const SizedBox(width: 8),
               ],
             ),
