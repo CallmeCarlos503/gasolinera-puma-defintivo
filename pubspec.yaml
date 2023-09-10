@@ -9,12 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite:
+  path: 
 
   carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  sqflite_common_ffi:
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.11.0
 

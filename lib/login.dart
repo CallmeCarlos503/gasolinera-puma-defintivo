@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gasolinera/Principal.dart';
 import 'package:gasolinera/register.dart';
+import 'package:sqflite/sqflite.dart';
 
 BuildContext? Contexto;
 
@@ -27,6 +28,7 @@ class Login extends StatelessWidget {
 
 Widget background() {
   return Container(
+    
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage('assets/fondo.jpg'),
@@ -50,6 +52,7 @@ Widget Formulario() {
         'INICIO DE SESION',
         style: TextStyle(color: Colors.white, fontSize: 30),
       ),
+      
       Image.asset(
         'assets/logo.png',
         width: 250,
@@ -91,6 +94,7 @@ Widget Formulario() {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      
                       Navigator.push(Contexto!,
                           MaterialPageRoute(builder: (context) => Principal()));
                     },
