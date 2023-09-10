@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gasolinera/SQL/db.dart';
 import 'package:gasolinera/main.dart';
 
 import 'login.dart';
@@ -85,6 +86,10 @@ Widget drawers() {
   );
 }
 
+final Controlleremail = TextEditingController();
+final Controllerpassword = TextEditingController();
+final Controllertelefono = TextEditingController();
+
 Widget Formulario() {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -110,7 +115,12 @@ Widget Formulario() {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.00),
             child: TextField(
+              controller: Controlleremail,
               decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.white,
+                  ),
                   labelText: 'Correo electronico',
                   hintText: 'Carlosgeek503@gmail.com',
                   hintStyle: TextStyle(color: Colors.white),
@@ -126,8 +136,13 @@ Widget Formulario() {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextField(
+                  controller: Controllerpassword,
                   obscureText: true,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.password,
+                        color: Colors.white,
+                      ),
                       labelText: 'Contraseña',
                       hintText: '*************',
                       hintStyle: TextStyle(color: Colors.white),
@@ -143,7 +158,12 @@ Widget Formulario() {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15.0),
                     child: TextField(
+                      controller: Controllertelefono,
                       decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.phone,
+                            color: Colors.white,
+                          ),
                           labelText: 'Numero de telefono',
                           hintText: '7168-0706',
                           hintStyle: TextStyle(color: Colors.white),
@@ -160,8 +180,22 @@ Widget Formulario() {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(Contexto!,
-                          MaterialPageRoute(builder: (context) => Register()));
+                      //usar controllers en variables
+                      String email = Controlleremail.text;
+                      String password = Controllerpassword.text;
+                      String telefono = Controllertelefono.text;
+                      if (email.isEmpty ||
+                          password.isEmpty ||
+                          telefono.isEmpty) {
+                        ScaffoldMessenger.of(ContextoR!).showSnackBar(SnackBar(
+                            content:
+                                Text('Todos los campos son obligatorios')));
+                      } else {
+                        //usar los metodos de la clase  Db
+                        Db.insertar("testing", email, password, telefono);
+                        Navigator.push(ContextoR!,
+                            MaterialPageRoute(builder: (context) => Login()));
+                      }
                     },
                     child: const Text('Registrate'),
                   ),

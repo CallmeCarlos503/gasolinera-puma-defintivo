@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gasolinera/Principal.dart';
 import 'package:gasolinera/register.dart';
 import 'package:sqflite/sqflite.dart';
+import 'SQL/db.dart';
 
 BuildContext? Contexto;
+final Controlleremail = TextEditingController();
+final Controllerpassword = TextEditingController();
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -28,7 +31,6 @@ class Login extends StatelessWidget {
 
 Widget background() {
   return Container(
-    
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage('assets/fondo.jpg'),
@@ -52,7 +54,6 @@ Widget Formulario() {
         'INICIO DE SESION',
         style: TextStyle(color: Colors.white, fontSize: 30),
       ),
-      
       Image.asset(
         'assets/logo.png',
         width: 250,
@@ -62,6 +63,7 @@ Widget Formulario() {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.00),
             child: TextField(
+              controller: Controlleremail,
               decoration: InputDecoration(
                   labelText: 'Correo electronico',
                   hintText: 'Carlosgeek503@gmail.com',
@@ -78,6 +80,7 @@ Widget Formulario() {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: TextField(
+                  controller: Controllerpassword,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: 'Contraseña',
@@ -94,9 +97,28 @@ Widget Formulario() {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      
-                      Navigator.push(Contexto!,
-                          MaterialPageRoute(builder: (context) => Principal()));
+                      //tomar los datos del texteditting controlller
+                      String correo = Controlleremail.text;
+                      String password = Controllerpassword.text;
+                      if (correo.isEmpty || password.isEmpty) {
+                        ScaffoldMessenger.of(Contexto!).showSnackBar(
+                            SnackBar(content: Text('Faltan datos')));
+                      } else {
+                        // usar el metodo de Db.dart en la carpeta SQL
+                        Db.login(correo, password).then((value) {
+                          if (value == true) {
+                            Navigator.pushReplacement(
+                                Contexto!,
+                                MaterialPageRoute(
+                                    builder: (context) => Principal()));
+                          } else {
+                            ScaffoldMessenger.of(Contexto!).showSnackBar(
+                                SnackBar(
+                                    content: Text(
+                                        'Usuario o contraseña incorrectos')));
+                          }
+                        });
+                      }
                     },
                     child: const Text('Iniciar sesion'),
                   ),
