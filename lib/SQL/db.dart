@@ -24,8 +24,6 @@ class Db {
             
             INSERT INTO ESTADOS(ID, NOMBRE) VALUES (1, 'Activo');
             INSERT INTO ESTADOS(ID, NOMBRE) VALUES (2, 'Inactivo');
-            
-
               """);
       },
     );
