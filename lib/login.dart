@@ -65,6 +65,10 @@ Widget Formulario() {
             child: TextField(
               controller: Controlleremail,
               decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.white,
+                  ),
                   labelText: 'Correo electronico',
                   hintText: 'Carlosgeek503@gmail.com',
                   hintStyle: TextStyle(color: Colors.white),
@@ -83,6 +87,10 @@ Widget Formulario() {
                   controller: Controllerpassword,
                   obscureText: true,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.password_rounded,
+                        color: Colors.white,
+                      ),
                       labelText: 'Contraseña',
                       hintText: '*************',
                       hintStyle: TextStyle(color: Colors.white),

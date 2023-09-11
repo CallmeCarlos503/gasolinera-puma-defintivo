@@ -9,9 +9,9 @@ class Db {
       join(await getDatabasesPath(), 'puma.db'),
       version: 1,
       onCreate: (db, version) async {
-        return db.execute(
-          "CREATE TABLE USUARIOS (ID INTEGER AUTO INCREMENT PRIMARY KEY, NOMBRE TEXT NOT NULL, CORREO TEXT NOT NULL, PASSWORD TEXT NOT NULL, TELEFONO TEXT NOT NULL);",
-        );
+        return db.execute("""
+            CREATE TABLE USUARIOS (ID INTEGER AUTO INCREMENT PRIMARY KEY,NOMBRE TEXT NOT NULL,CORREO TEXT NOT NULL,PASSWORD TEXT NOT NULL,TELEFONO TEXT NOT NULL);
+              """);
       },
     );
   }
@@ -26,6 +26,7 @@ class Db {
       'PASSWORD': password,
       'TELEFONO': telefono,
     });
+    db.close();
   }
 
   //ELIMINAR
